@@ -3,168 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hifza Naeem - Portfolio</title>
+    <title>Hifza Naeem - DevOps & Web Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== EASY CUSTOMIZATION SECTION ===== */
-        :root {
-            /* Main Colors - Change these to customize your theme */
-            --primary-color: #00f2ff;
-            --secondary-color: #7928ca;
-            --accent-color: #ff0080;
-            --bg-dark: #0a0a0f;
-            --bg-card: #1a1a2e;
-            --text-primary: #ffffff;
-            --text-secondary: #b0b0b0;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-teal: #0891B2;
+            --dark-teal: #0E7490;
+            --light-teal: #67E8F9;
+            --cream: #FFFEF2;
+            --yellow: #FCD34D;
+            --white: #FFFFFF;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.6;
+            font-family: 'Fredoka', sans-serif;
+            background: var(--cream);
+            color: #1F2937;
             overflow-x: hidden;
         }
 
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 20% 50%, rgba(120, 40, 200, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(0, 242, 255, 0.15) 0%, transparent 50%);
-        }
-
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveBackground 20s linear infinite;
-        }
-
-        @keyframes moveBackground {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(26, 26, 46, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
         /* Hero Section */
         .hero {
+            background: var(--primary-teal);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(103, 232, 249, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(14, 116, 144, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 15s infinite ease-in-out reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(5deg); }
+            66% { transform: translate(-30px, 30px) rotate(-5deg); }
+        }
+
+        .hero-content {
             text-align: center;
-            padding: 2rem;
-            margin-top: 60px;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-content h2 {
-            font-size: 2rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease 0.2s backwards;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            animation: fadeInUp 1s ease 0.4s backwards;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.6s backwards;
-        }
-
-        .contact-info a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: transform 0.3s ease;
-            display: inline-block;
-        }
-
-        .contact-info a:hover {
-            transform: translateY(-3px);
+            position: relative;
+            z-index: 10;
+            animation: fadeInUp 1s ease-out;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -172,382 +93,779 @@
             }
         }
 
-        /* Section Styles */
-        section {
-            padding: 5rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
         }
 
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-            display: inline-block;
+        .hero-subtitle {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            color: var(--light-teal);
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
+
+        .scroll-arrow {
+            position: absolute;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: bounce 2s infinite;
+            cursor: pointer;
         }
 
-        h2::after {
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-arrow::after {
+            content: '↓';
+            color: var(--white);
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Section Headers */
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--primary-teal);
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
             content: '';
             position: absolute;
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gradient-3);
-            border-radius: 2px;
+            width: 60%;
+            height: 6px;
+            background: var(--yellow);
+            border-radius: 3px;
         }
 
-        /* Skills Grid */
+        /* About Me */
+        .about-content {
+            background: var(--primary-teal);
+            border-radius: 30px;
+            padding: 60px;
+            color: var(--white);
+            box-shadow: 0 20px 60px rgba(8, 145, 178, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 20px;
+            border: 6px solid var(--white);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--yellow);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .fun-note {
+            background: rgba(252, 211, 77, 0.2);
+            border-left: 4px solid var(--yellow);
+            padding: 15px 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            font-style: italic;
+        }
+
+        /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
         }
 
         .skill-card {
-            background: var(--bg-card);
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: default;
+            animation: fadeInScale 0.6s ease-out backwards;
+        }
+
+        .skill-card:nth-child(1) { animation-delay: 0.1s; }
+        .skill-card:nth-child(2) { animation-delay: 0.2s; }
+        .skill-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(8, 145, 178, 0.2);
         }
 
-        /* Projects Grid */
+        .skill-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-teal);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-teal);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            background: var(--primary-teal);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--dark-teal);
+            transform: scale(1.1);
+        }
+
+        /* Projects */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 50px;
         }
 
         .project-card {
-            background: var(--bg-card);
-            border-radius: 15px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--white);
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-left: 8px solid var(--primary-teal);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            animation: slideInRight 0.8s ease-out backwards;
         }
 
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
 
-        .project-card:hover::before {
-            left: 100%;
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-color);
-            box-shadow: 0 15px 40px rgba(0, 242, 255, 0.3);
+            transform: translateX(10px);
+            box-shadow: 0 20px 50px rgba(8, 145, 178, 0.2);
         }
 
-        .project-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .project-card h4 {
-            color: var(--text-secondary);
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .project-title {
+            font-size: 2.2rem;
+            color: var(--primary-teal);
+            font-weight: 700;
         }
 
-        .project-card ul {
-            list-style: none;
-            margin-top: 0.5rem;
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .project-card li {
-            padding: 0.3rem 0;
-            color: var(--text-secondary);
-            position: relative;
-            padding-left: 1.5rem;
+        .tech-badge {
+            background: var(--light-teal);
+            color: var(--dark-teal);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
         }
 
-        .project-card li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
+        .project-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4B5563;
+            margin-bottom: 25px;
         }
 
-        /* Education & Experience */
-        .timeline-item {
-            background: var(--bg-card);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-left: 4px solid var(--primary-color);
+        .project-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--primary-teal);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
 
-        .timeline-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2);
+        .project-link:hover {
+            background: var(--dark-teal);
+            transform: scale(1.05);
         }
 
-        .timeline-item h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-item .date {
-            color: var(--text-secondary);
+        .project-note {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 15px 20px;
+            margin-top: 20px;
+            border-radius: 10px;
             font-style: italic;
-            margin-bottom: 1rem;
+            color: #92400E;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--primary-teal);
+            border-radius: 30px;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInScale 1s ease-out;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .contact-title {
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-label {
+            font-size: 1rem;
+            color: var(--light-teal);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: var(--white);
+            word-break: break-word;
+        }
+
+        .contact-value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--yellow);
         }
 
         /* Footer */
-        footer {
-            background: var(--bg-card);
-            padding: 2rem;
+        .footer {
             text-align: center;
-            margin-top: 5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 20px;
+            color: var(--dark-teal);
+        }
+
+        .footer-text {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .university {
+            font-weight: 600;
+            color: var(--primary-teal);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content h2 {
-                font-size: 1.5rem;
-            }
-
-            .projects-grid {
+            .about-grid {
                 grid-template-columns: 1fr;
+                text-align: center;
             }
 
-            nav ul {
-                gap: 1rem;
+            .about-image {
+                max-width: 250px;
+                margin: 0 auto;
             }
 
-            section {
-                padding: 3rem 5%;
+            .about-content {
+                padding: 40px 30px;
+            }
+
+            .project-card {
+                padding: 30px;
+            }
+
+            .contact-section {
+                padding: 40px 30px;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .skill-card {
+                padding: 30px;
             }
         }
 
-        /* Scroll Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+        /* Decorative elements */
+        .doodle {
+            position: absolute;
+            opacity: 0.1;
+            pointer-events: none;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .doodle-circle {
+            width: 200px;
+            height: 200px;
+            border: 4px dashed var(--primary-teal);
+            border-radius: 50%;
+            top: 100px;
+            right: 50px;
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .doodle-arrow {
+            font-size: 4rem;
+            color: var(--primary-teal);
+            bottom: 50px;
+            left: 50px;
+            animation: wiggle 3s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
-
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-        </ul>
-    </nav>
-
-    <section id="home" class="hero">
+    <!-- Hero Section -->
+    <div class="hero">
         <div class="hero-content">
-            <h1>Hifza Naeem</h1>
-            <h2>Computer Science Student & Developer</h2>
-            <p>Passionate about AI, Machine Learning, and Full-Stack Development</p>
-            <div class="contact-info">
-                <a href="mailto:nhifza889@gmail.com">📧 Email</a>
-                <a href="tel:+923340022103">📱 +92 334-0022103</a>
-               <a href="https://www.linkedin.com/in/hifza-naeem-9527392b6" target="_blank">💼 LinkedIn</a>
+            <h1 class="hero-title">HIFZA NAEEM</h1>
+            <p class="hero-subtitle">DevOps Engineer & Full Stack Developer</p>
+        </div>
+        <div class="scroll-arrow"></div>
+    </div>
 
+    <!-- About Me Section -->
+    <div class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ABOUT ME</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-grid">
+                    <div>
+                        <img src="/mnt/user-data/uploads/Hifza.jpeg" alt="Hifza Naeem" class="about-image">
+                    </div>
+                    <div class="about-text">
+                        <h3>Hey! This is my intro 👋</h3>
+                        <p>With over 2 years of curiosity-driven coding, I'm a passionate developer who loves building robust, scalable applications and exploring the world of DevOps. I thrive on solving complex problems and turning ideas into working solutions.</p>
+                        
+                        <p>I'm constantly seeking to expand my skill set and stay updated with the latest industry trends. My goal is to become a leading expert in DevOps engineering, mastering containerization, orchestration, and delivering innovative and impactful solutions for every project!</p>
+                        
+                        <p>Currently in my 6th semester at National University of Technology, I'm working hard to get a solid grip on the MERN stack, dockerizing applications, and deploying them on nginx servers.</p>
+                        
+                        <div class="fun-note">
+                            <strong>Real talk:</strong> I find it really difficult to give theory exams (seriously, who invented those?! 😅). I'm much more of a hands-on, practical learner - give me a real project to build any day over memorizing definitions! That's where I truly shine and have fun while learning.
+                        </div>
+                        
+                        <div class="fun-note" style="margin-top: 15px; background: rgba(239, 68, 68, 0.2); border-color: #DC2626; color: #7F1D1D;">
+                            <strong>The harsh reality:</strong> Haven't landed an industry internship yet because apparently every internship requires "prior experience" (classic catch-22, right?! 🤷‍♀️). One recruiter even gave me a task, I spent 2 whole days learning ColdFusion (which is ancient history, by the way) and built them an entire application... and they ghosted me. No response. Nothing. Still waiting for that reply! 👻
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-
-    <section id="education">
-        <h2>Education</h2>
-        <div class="timeline-item fade-in">
-            <h3>National University of Technology, Islamabad</h3>
-            <div class="date">Expected Graduation: June 2027</div>
-            <p><strong>Bachelor of Computer Science</strong></p>
-            <p>Focused on Artificial Intelligence, Machine Learning, and Software Development</p>
-        </div>
-    </section>
-
-    <section id="skills">
-        <h2>Technical Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-card fade-in">Python</div>
-            <div class="skill-card fade-in">Java</div>
-            <div class="skill-card fade-in">JavaScript</div>
-            <div class="skill-card fade-in">Node.js</div>
-            <div class="skill-card fade-in">Express.js</div>
-            <div class="skill-card fade-in">HTML & CSS</div>
-            <div class="skill-card fade-in">SQL & MySQL</div>
-            <div class="skill-card fade-in">MongoDB</div>
-            <div class="skill-card fade-in">Docker</div>
-            <div class="skill-card fade-in">Linux</div>
-        </div>
-    </section>
-
-    <section id="projects">
-    <h2>Featured Projects</h2>
-    <div class="projects-grid">
-
-        <a href="https://github.com/hifz796/billing-system" target="_blank" class="project-card fade-in">
-            <h3>Billing System</h3>
-            <p>Desktop application for product sales management and invoice generation</p>
-            <h4>Technologies</h4>
-            <ul>
-                <li>Java & Java Swing</li>
-                <li>SQL Database Integration</li>
-                <li>GUI Development</li>
-                <li>OOP Principles</li>
-            </ul>
-        <a href="https://github.com/hifz796/backend-server" target="_blank" class="project-card fade-in">
-    <h3>User Management REST API</h3>
-    <p>Backend web application for managing users with CRUD operations and secure API endpoints</p>
-    <h4>Technologies</h4>
-    <ul>
-        <li>JavaScript (Node.js)</li>
-        <li>Express.js</li>
-        <li>RESTful API Design</li>
-        <li>MVC Architecture & Backend Development</li>
-    </ul>
-</a>
-            <a href="https://github.com/hifz796/recipe-finder" target="_blank" class="project-card fade-in">
-    <h3>Recipe Finder</h3>
-    <p>Full-stack web application to discover recipes, search by category, watch YouTube tutorials, and save favorites with secure user authentication</p>
-    <h4>Technologies</h4>
-    <ul>
-        <li>JavaScript (Node.js & Express.js)</li>
-        <li>MongoDB & Mongoose</li>
-        <li>HTML, CSS, JavaScript (ES6+)</li>
-        <li>TheMealDB API Integration</li>
-        <li>JWT Authentication & Password Hashing</li>
-    </ul>
-</a>
-
-
-
-        <a href="https://github.com/hifz796/team-directory" target="_blank" class="project-card fade-in">
-            <h3>Team Directory</h3>
-            <p>Full-stack employee directory application with backend and frontend integration</p>
-            <h4>Technologies</h4>
-            <ul>
-                <li>Lucee CFML</li>
-                <li>MySQL</li>
-                <li>RESTful APIs</li>
-                <li>Full-Stack Web Development</li>
-            </ul>
-        </a>
     </div>
-</section>
 
-    <section id="experience">
-        <h2>Other Technical Experience</h2>
-        <div class="timeline-item fade-in">
-            
-            <ul>
-                <li>Containerized applications using Docker for isolated deployment environments</li>
-                <li>Proficient in Linux command-line operations including disk management and user administration</li>
-                <li>Configured and deployed web servers (Apache, Nginx) in Ubuntu environments</li>
-                <li>Automated tasks using cron job scheduling</li>
-            </ul>
+    <!-- What I Use Section -->
+    <div class="section" style="background: #F0FDFA;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">WHAT I USE</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>
+                        <span class="skill-icon">🎨</span>
+                        Frontend
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>
+                        <span class="skill-icon">⚙️</span>
+                        Backend
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">MySQL</span>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>
+                        <span class="skill-icon">🚀</span>
+                        DevOps
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Nginx</span>
+                        <span class="skill-tag">CI/CD</span>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="doodle doodle-circle"></div>
+    </div>
 
-        <div class="timeline-item fade-in">
-            <h3>Core Competencies</h3>
-            <ul>
-                <li>Problem Solving & Algorithm Design</li>
-                <li>Database Modeling & Optimization</li>
-                <li>Full-Stack Web Development</li>
-                <li>Team Collaboration & Project Management</li>
-                <li>Data Management & Analysis</li>
-            </ul>
+    <!-- Projects Section -->
+    <div class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">MY PROJECTS</h2>
+            </div>
+            <div class="projects-grid">
+                <!-- Twitter Clone -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">🐦 Twitter Clone Backend</h3>
+                        <div class="project-tech">
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">Express</span>
+                            <span class="tech-badge">MongoDB</span>
+                            <span class="tech-badge">Docker</span>
+                            <span class="tech-badge">Nginx</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Successfully containerized and deployed a Twitter-like backend application, showcasing expertise in modern DevOps practices. This project demonstrates my ability to build scalable RESTful APIs and deploy them using Docker containers with Nginx as a reverse proxy. Currently working on developing the full-stack version to create a complete social media platform experience.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/hifz796/twitter-clone" target="_blank" class="project-link">
+                            📂 View on GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/posts/hifza-naeem-9527392b6_ive-successfully-containerized-and-deployed-activity-7423341563730288640-Ab3R" target="_blank" class="project-link">
+                            💼 LinkedIn Post
+                        </a>
+                    </div>
+                    <div class="project-note">
+                        <strong>Tech Highlight:</strong> Implemented containerization with Docker for consistent deployment across environments and used Nginx for efficient load balancing and reverse proxy configuration.
+                    </div>
+                </div>
+
+                <!-- Recipe Finder -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">🍳 Recipe Finder</h3>
+                        <div class="project-tech">
+                            <span class="tech-badge">React.js</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">Docker</span>
+                            <span class="tech-badge">API Integration</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        A containerized full-stack recipe discovery application that helps users find delicious recipes based on ingredients they have. Built with React for a dynamic user interface and containerized using Docker for seamless deployment. This project showcases my frontend development skills and my ability to integrate third-party APIs while maintaining clean, maintainable code.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/hifz796/recipe-finder" target="_blank" class="project-link">
+                            📂 View on GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/posts/hifza-naeem-9527392b6_revisiting-docker-focusing-on-fundamentals-activity-7423332083168739329-01ZP" target="_blank" class="project-link">
+                            💼 LinkedIn Post
+                        </a>
+                    </div>
+                    <div class="project-note">
+                        <strong>Learning Focus:</strong> Revisited Docker fundamentals to strengthen containerization knowledge and implemented best practices for creating efficient, production-ready Docker images.
+                    </div>
+                </div>
+
+                <!-- Team Directory -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">👥 Team Directory Application</h3>
+                        <div class="project-tech">
+                            <span class="tech-badge">ColdFusion</span>
+                            <span class="tech-badge">Database Design</span>
+                            <span class="tech-badge">Full Stack</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        A comprehensive team management application built as an internship assessment task. Developed in ColdFusion (a legacy technology I learned from scratch in just 2 days!), this application features complete CRUD operations for managing team members, role assignments, and organizational structure. Demonstrates my ability to quickly adapt to new technologies and deliver functional solutions under tight deadlines.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://www.linkedin.com/posts/hifza-naeem-9527392b6_team-directory-application-coldfusion-activity-7420092236526338049-nNUq" target="_blank" class="project-link">
+                            💼 LinkedIn Post
+                        </a>
+                    </div>
+                    <div class="project-note" style="background: #FEE2E2; border-color: #DC2626; color: #7F1D1D;">
+                        <strong>The Plot Twist:</strong> Spent 2 intense days learning ColdFusion (a technology from the early 2000s) and built this entire application for a recruiter's internship task. The result? Radio silence. They never responded. Not even a "thanks, but no thanks." This experience taught me resilience and the importance of learning, regardless of the outcome! 💪
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
+        <div class="doodle doodle-arrow">↗</div>
+    </div>
 
-    <footer>
-        <p>&copy; 2026 Hifza Naeem. All rights reserved.</p>
-        <p>Built with passion and dedication to technology</p>
-    </footer>
+    <!-- Contact Section -->
+    <div class="section" style="padding-bottom: 40px;">
+        <div class="container">
+            <div class="contact-section">
+                <h2 class="contact-title">LET'S CONNECT!</h2>
+                <p style="color: var(--white); font-size: 1.2rem; max-width: 600px; margin: 0 auto 20px;">
+                    Ready to collaborate or just want to chat about tech? Feel free to reach out through any of these channels!
+                </p>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">
+                            <a href="mailto:hifzanaeem721@gmail.com">hifzanaeem721@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">
+                            <a href="tel:+923340022103">0334-0022103</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-label">LinkedIn</div>
+                        <div class="contact-value">
+                            <a href="https://www.linkedin.com/in/hifza-naeem-9527392b6" target="_blank">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p class="footer-text">Currently studying at <span class="university">National University of Technology</span></p>
+        <p style="color: var(--primary-teal); font-size: 0.9rem; margin-top: 10px;">6th Semester • Computer Science</p>
+        <p style="color: #9CA3AF; font-size: 0.9rem; margin-top: 20px;">© 2026 Hifza Naeem. Built with passion (and lots of coffee ☕)</p>
+    </div>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Smooth scroll for arrow
+        document.querySelector('.scroll-arrow').addEventListener('click', () => {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
             });
         });
 
-        // Intersection Observer for fade-in animations
+        // Intersection Observer for animations on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
         };
 
-        const observer = new IntersectionObserver(entries => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
+        });
 
-        // Active nav link highlighting
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
+        // Add hover effect to skill tags
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1) rotate(2deg)';
             });
-
-            document.querySelectorAll('nav a').forEach(a => {
-                a.style.color = 'var(--text-primary)';
-                if (a.getAttribute('href').slice(1) === current) {
-                    a.style.color = 'var(--primary-color)';
-                }
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
             });
         });
     </script>
